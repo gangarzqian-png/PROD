@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0b0b10; /* deep dark */
+  --foreground: #e7e7ec; /* soft light */
+  --accent-orange: #ff7a1a;
+  --accent-purple: #8a3ffc;
+  --muted: #16161d;
+  --card: #0f0f16;
+  --line: linear-gradient(90deg, var(--accent-purple), var(--accent-orange));
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-card: var(--card);
+  --color-accent-orange: var(--accent-orange);
+  --color-accent-purple: var(--accent-purple);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: radial-gradient(1200px 600px at 80% -10%, #20103033, transparent),
+    radial-gradient(1000px 500px at -10% 10%, #40201033, transparent),
+    var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system,
+    Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial,
+    "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+/* accent line */
+.hr-gradient {
+  height: 1px;
+  background: var(--line);
+}
+
+.border-gradient {
+  position: relative;
+}
+.border-gradient:before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: var(--line);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.card {
+  background: linear-gradient(180deg, #ffffff06, #00000000), var(--card);
+  border-radius: 14px;
+}
+
+.input {
+  background: #12121a;
+  border: 1px solid #262637;
+  border-radius: 12px;
+}
+.input:focus {
+  outline: none;
+  border-color: color-mix(in oklab, var(--accent-purple) 60%, white 10%);
+  box-shadow: 0 0 0 4px color-mix(in oklab, var(--accent-purple) 25%, transparent 75%);
+}
+
+.btn {
+  background: linear-gradient(180deg, color-mix(in oklab, var(--accent-purple) 40%, black 60%), color-mix(in oklab, var(--accent-orange) 40%, black 60%));
+  color: white;
+  border-radius: 10px;
+}
+
+.text-gradient {
+  background: var(--line);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
