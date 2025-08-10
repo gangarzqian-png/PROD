@@ -1,0 +1,35 @@
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+import "./globals.css";
+import Header from "./header";
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+export const metadata: Metadata = {
+  title: "Prod",
+  description: "Prod - 音楽クルー/募集/マッチング",
+  themeColor: "#0b0b10",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="ja">
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-dvh`}>
+        <Header />
+        <main className="max-w-6xl mx-auto px-4 py-6">{children}</main>
+      </body>
+    </html>
+  );
+}
